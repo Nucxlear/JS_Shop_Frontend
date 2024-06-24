@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 import React from 'react';
+import ProductAvailability from './ProductAvailability'
 import ProductAvailabilityAdd from './ProductAvailabilityAdd'
-import ProductList from './ProductList'
 
-class App extends React.Component{
+class ProductList extends React.Component{
   constructor(props){
     super(props);
 
@@ -24,6 +24,7 @@ class App extends React.Component{
       });
    });
   }
+
   onProductDelete(_id){
     this.setState({
       products: this.state.products.filter(function(product){
@@ -38,17 +39,21 @@ class App extends React.Component{
       })
   
   }
+  
   render(){
     return (
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route path="/" element={<ProductList products={this.state.products} onProductDelete={this.onProductDelete}/>} />
-            <Route path="/add" element={<ProductAvailabilityAdd onProductAdd={this.onProductAdd}/>} />
-          </Routes>
-        </Router>
+      <div className="List">
+        <ul>
+          {
+            this.state.products.map((product) =>{
+              return(
+                <ProductAvailability product={product} onProductDelete={this.onProductDelete}  key={product._id}/>
+              )
+            })
+          }
+        </ul>
       </div>
     );
   }
 }
-export default App;
+export default ProductList;

@@ -1,8 +1,9 @@
 
 import './App.css';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-class ProductAvailabilityAdd extends React.Component{
+class ProductAvailabilityAddInner extends React.Component{
 
   constructor(props){
     super(props);
@@ -58,9 +59,8 @@ class ProductAvailabilityAdd extends React.Component{
     }).then((res)=>{
       return res.json();
     }).then((data) => {
-      console.log('added');
-      console.log(data);
       this.props.onProductAdd(data);
+      this.props.history('/');
     });
   }
 
@@ -76,4 +76,9 @@ class ProductAvailabilityAdd extends React.Component{
   }
 }
 
+const ProductAvailabilityAdd = (props) =>{
+  return(
+    <ProductAvailabilityAddInner {...props} history={useNavigate()}/>
+  )
+}
 export default ProductAvailabilityAdd;
