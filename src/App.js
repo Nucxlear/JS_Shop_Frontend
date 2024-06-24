@@ -2,6 +2,7 @@
 import './App.css';
 import React from 'react';
 import ProductAvailability from './ProductAvailability'
+import ProductAvailabilityAdd from './ProductAvailabilityAdd'
 
 class App extends React.Component{
   constructor(props){
@@ -11,7 +12,9 @@ class App extends React.Component{
       products: []
     }
     this.onProductDelete = this.onProductDelete.bind(this);
+    this.onProductAdd = this.onProductAdd.bind(this);
   }
+
   componentDidMount(){
     fetch('products').then(function(res){
        return res.json();
@@ -22,25 +25,32 @@ class App extends React.Component{
    });
   }
 
-  onProductDelete(id){
+  onProductDelete(_id){
     this.setState({
       products: this.state.products.filter(function(product){
-        return product.id !== id;
+        return product._id !== _id;
       })
     });
   }
-  render(){
 
-    function mapProducts(product){
-      return(
-        <ProductAvailability product={product} key={product.id}/>
-      )
-    }
+  onProductAdd(product){
+    this.setState({
+      products: [...this.state.products, product]
+      })
+  
+  }
+  
+  render(){
     return (
       <div className="App">
+        <ProductAvailabilityAdd onProductAdd={this.onProductAdd}/>
         <ul>
           {
-            this.state.products.map(mapProducts)
+            this.state.products.map((product) =>{
+              return(
+                <ProductAvailability product={product} onProductDelete={this.onProductDelete}  key={product._id}/>
+              )
+            })
           }
         </ul>
       </div>
