@@ -1,8 +1,9 @@
 
 import './App.css';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, NavLink } from 'react-router-dom';
+import {productAdd} from './actions'
+import { connect } from 'react-redux';
 class ProductAvailabilityAddInner extends React.Component{
 
   constructor(props){
@@ -59,19 +60,22 @@ class ProductAvailabilityAddInner extends React.Component{
     }).then((res)=>{
       return res.json();
     }).then((data) => {
-      this.props.onProductAdd(data);
+      this.props.dispatch(productAdd(data._id, data.title, data.description, data.price));
       this.props.history('/');
     });
   }
 
   render(){
     return(
+      <div className="Add">
+        <NavLink to='/add'>Back To List</NavLink>
       <form onSubmit={this.onAddFormSubmit}>
         <input type="text" value ={this.state.title} onChange={this.onTitleChange} placeholder="Title"/>
         <input type="text" value ={this.state.description} onChange={this.onDescriptionChange} placeholder="Description"/>
         <input type="text" value ={this.state.price} onChange={this.onPriceChange} placeholder="Price"/>
         <input type="submit" value="Add" />
       </form>
+      </div>
     )
   }
 }
@@ -81,4 +85,4 @@ const ProductAvailabilityAdd = (props) =>{
     <ProductAvailabilityAddInner {...props} history={useNavigate()}/>
   )
 }
-export default ProductAvailabilityAdd;
+export default connect()(ProductAvailabilityAdd);
