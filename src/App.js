@@ -17,9 +17,6 @@ class App extends React.Component{
   
   render(){
     return (
-      <div className="container">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
             <Provider store={this.props.store}>
             <Router>
               <Routes>
@@ -28,9 +25,6 @@ class App extends React.Component{
               </Routes>
             </Router>
             </Provider>
-          </div>
-        </div>
-      </div>
     );
   }
 }

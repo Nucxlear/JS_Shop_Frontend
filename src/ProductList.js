@@ -9,9 +9,9 @@ class ProductList extends React.Component{
   render(){
     return (
       <section >
-        <navLink>
-            <a class="btn-add-product" href="add">Add products</a>
-        </navLink>
+        <NavLink className="btn-add-product" to='/add'>
+            <span>Add products</span>
+        </NavLink>
         
         <hr/>
 

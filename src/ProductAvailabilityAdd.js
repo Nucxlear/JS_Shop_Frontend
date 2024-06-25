@@ -67,15 +67,20 @@ class ProductAvailabilityAddInner extends React.Component{
 
   render(){
     return(
-      <div className="Add">
-        <NavLink to='/add'>Back To List</NavLink>
-      <form onSubmit={this.onAddFormSubmit}>
-        <input type="text" value ={this.state.title} onChange={this.onTitleChange} placeholder="Title"/>
-        <input type="text" value ={this.state.description} onChange={this.onDescriptionChange} placeholder="Description"/>
-        <input type="text" value ={this.state.price} onChange={this.onPriceChange} placeholder="Price"/>
-        <input type="submit" value="Add" />
-      </form>
-      </div>
+      <section>
+        <NavLink className="btn-go-back" to='/'>
+            <span>Go back</span>
+        </NavLink>
+        
+        <hr/>
+
+        <form class="form-add-product" onSubmit={this.onAddFormSubmit}>
+            <input class="input-title" value={this.state.title} onChange={this.onTitleChange} type="text" placeholder="Название" />
+            <input class="input-desc"  value={this.state.description} onChange={this.onDescriptionChange} type="text" placeholder="Описание"/>
+            <input class="input-price" value={this.state.price} onChange={this.onPriceChange}type="text" placeholder="Цена" />
+            <button class="btn-add">Добавить</button>
+        </form>
+      </section>
     )
   }
 }

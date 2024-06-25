@@ -21,12 +21,13 @@ hr {
 }
 
 
-navLink {
-  margin: 20px;
-}
+.btn-add-product, 
+.btn-go-back {
+  width: 120px;
 
-navLink .btn-add-product, 
-navLink .btn-go-back {
+  display: flex;
+  justify-content: center;
+
   color: white;
 
   margin: 10px;
@@ -38,13 +39,8 @@ navLink .btn-go-back {
   background-color: #068cec;
 }
 
-navLink .btn-add-product:link,
-navLink .btn-go-back:link {
-  text-decoration: none;
-}
-
-navLink .btn-add-product:hover,
-navLink .btn-go-back:hover {
+.btn-add-product:hover,
+.btn-go-back:hover {
   color: #068cec;
 
   border: 1px solid #068cec;
@@ -53,8 +49,8 @@ navLink .btn-go-back:hover {
   background-color: white;
 }
 
-navLink .btn-add-product:active,
-navLink .btn-go-back:active {
+.btn-add-product:active,
+.btn-go-back:active {
   color: white;
 
   border: 1px solid white;
@@ -137,15 +133,15 @@ span {
 }
 
 .product input:checked ~ .product-content {
-  border: 1px solid white;
-
-  background-color: #068cec;
-}
-
-.product input:not(:checked) ~ .product-content {
   border: 1px solid #068cec;
 
   background-color: #1077c1;
+}
+
+.product input:not(:checked) ~ .product-content {
+  border: 1px solid white;
+
+  background-color: #068cec;
 }
 
 

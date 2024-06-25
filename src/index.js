@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux';
 import product from './reducers'
+import './index.css'
 
 const store = createStore(product);
 const root = ReactDOM.createRoot(document.getElementById('root'));
