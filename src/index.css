@@ -1,195 +1,225 @@
-body {
-  min-height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  background-color: #068cec;
+}
+
+section {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(53, 53, 53);
-  font-size: 0.8rem;
-  font-family: 'Work Sans'
+  flex-direction: column;
 }
 
-.card {
-  max-width: 1000px;
-  width: 100%;
-  padding: 4rem;
-  background-color: rgb(46, 45, 45);
+hr {
+  margin: 10px 20px;
+  border: none;
+  border-top: 1px solid white;
+}
+
+
+navLink {
+  margin: 20px;
+}
+
+navLink .btn-add-product, 
+navLink .btn-go-back {
   color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
 
-@media(max-width:768px) {
-  .card {
-    width: 100%;
-    padding: 1.5rem
-  }
-}
+  margin: 10px;
+  padding: 10px;
 
-.row {
-  margin: 0
-}
-
-.path {
-  color: grey;
-  margin-bottom: 1rem
-}
-
-.path a {
-  color: #ffffff
-}
-
-.info {
-  padding: 6vh 0vh
-}
-
-@media(max-width:768px) {
-  .info {
-    padding: 0
-  }
-}
-
-.checked {
-  color: rgb(255, 217, 0);
-  margin-right: 1vh
-}
-
-.fa-star-half-full {
-  color: rgb(255, 217, 0)
-}
-
-img {
-  height: fit-content;
-  width: 75%;
-  padding: 1rem
-}
-
-@media(max-width:768px) {
-  img {
-    padding: 2.5rem 0
-  }
-}
-
-.title .col {
-  padding: 0
-}
-
-.fa-heart-o {
-  font-size: 2rem;
-  color: #ffffffaf;
-  font-weight: lighter
-}
-
-#reviews {
-  margin-left: 3vh;
-  color: grey
-}
-
-.price {
-  margin-top: 2rem
-}
-
-label.radio span {
-  padding: 1vh 4vh;
-  background-color: rgb(54, 54, 54);
-  color: grey;
-  display: inline-block;
-  margin-right: 2vh
-}
-
-label.radio input:checked+span {
   border: 1px solid white;
-  padding: 1vh 4vh;
-  background-color: rgb(54, 54, 54);
-  margin-right: 2vh;
-  color: #ffffff;
-  display: inline-block
+  border-radius: 10px;
+
+  background-color: #068cec;
 }
 
-.carousel-control-prev {
-  width: unset
+navLink .btn-add-product:link,
+navLink .btn-go-back:link {
+  text-decoration: none;
 }
 
-.carousel-control-next {
-  left: 8vh;
-  right: unset;
-  width: unset
+navLink .btn-add-product:hover,
+navLink .btn-go-back:hover {
+  color: #068cec;
+
+  border: 1px solid #068cec;
+  border-radius: 10px;
+
+  background-color: white;
 }
 
-.lower {
-  margin-top: 3rem
-}
-
-.lower i {
-  padding: 2.5vh;
-  margin-right: 1vh;
-  color: grey;
-  border: 1px solid rgb(85, 85, 85)
-}
-
-.lower .col {
-  padding: 0
-}
-
-@media(max-width:768px) {
-  .lower i {
-    padding: 2vh;
-    margin-right: 1vh;
-    color: grey;
-    border: 1px solid rgb(85, 85, 85)
-  }
-}
-
-.btn {
-  background-color: transparent;
-  border-color: rgba(186, 216, 125, 0.863);
-  color: rgba(186, 216, 125, 0.863);
-  padding: 1.8vh 4.5vh;
-  height: fit-content;
-  border-radius: 3px
-}
-
-.btn:focus {
-  box-shadow: none;
-  outline: none;
-  box-shadow: none;
+navLink .btn-add-product:active,
+navLink .btn-go-back:active {
   color: white;
-  -webkit-box-shadow: none;
-  -webkit-user-select: none;
-  transition: none
+
+  border: 1px solid white;
+  border-radius: 10px;
+
+  background-color: #068cec;
 }
 
-.btn:hover {
-  color: white
+
+span {
+  overflow-wrap: break-word;
+} 
+
+
+.form-add-product {
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px;
 }
 
-@media(max-width:768px) {
-  .btn {
-    background-color: transparent;
-    border-color: rgba(186, 216, 125, 0.863);
-    color: rgba(186, 216, 125, 0.863);
-    padding: 1vh;
-    font-size: 0.9rem;
-    height: fit-content;
-    border-radius: 3px
-  }
+.form-add-product * {
+  margin: 10px;
 }
 
-a {
-  color: unset
+.form-add-product input {
+  height: 20px;
 }
 
-a:hover {
-  color: unset;
-  text-decoration: none
+.form-add-product textarea {
+  resize: none;
 }
 
-label.radio input {
+.form-add-product input,
+.form-add-product textarea {
+  padding: 6px;
+
+  border: 1px solid white;
+  border-radius: 10px;
+
+  outline: 0;
+}
+
+
+.list-products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.product-content {
+  width: 240px;
+  height: 360px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid white;
+  border-radius: 10px;
+
+  padding: 20px;
+  margin: 20px;
+
+  color: white;
+  background-color: #068cec;
+}
+
+
+.product label {
   position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none
+
+  width: 100%;
+  height: 100%;
 }
 
-label.radio {
-  cursor: pointer
+.product input {
+  display: none;
+}
+
+.product input:checked ~ .product-content {
+  border: 1px solid white;
+
+  background-color: #068cec;
+}
+
+.product input:not(:checked) ~ .product-content {
+  border: 1px solid #068cec;
+
+  background-color: #1077c1;
+}
+
+
+
+.product .product-content .product-del {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: end;
+}
+
+.product .product-content .product-del .btn-del,
+.form-add-product .btn-add {
+  border: 1px solid white;
+  border-radius: 10px;
+
+  margin: 10px;
+  padding: 10px;
+
+  color: white;
+  background-color: #0b67a8;
+
+  z-index: 1;
+}
+
+.product .product-content .product-del .btn-del:hover,
+.form-add-product .btn-add:hover {
+  border: 1px solid #0b67a8;
+
+  color: #0b67a8;
+  background-color: white;
+}
+
+.product .product-content .product-del .btn-del:active,
+.form-add-product .btn-add:active {
+  border: 1px solid white;
+
+  color: white;
+  background-color: #0b67a8;
+}
+
+
+.product .product-content .product-title span {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+.product .product-content .product-info {
+  margin: 10px 0;
+}
+
+.product .product-content .product-info .desc,
+.product .product-content .product-info .price {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 0;
+}
+
+.product .product-content .product-info .desc .desc-title,
+.product .product-content .product-info .price .price-title {
+  font-size: 10px;
+  color: #d3e7f6;
+}
+
+.product .product-content .product-info .desc .desc-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.product .product-content .product-info .price .price-text {
+  font-size: 18px;
+  font-weight: 700;
 }

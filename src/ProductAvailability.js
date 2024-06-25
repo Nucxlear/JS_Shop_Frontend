@@ -52,13 +52,31 @@ class ProductAvailability extends React.Component{
 
   render(){
     return(
-      <li>
-      <span>{this.props.product.title + ' '}</span>
-      <span><i>{this.props.product.description + ' '}</i></span>
-      <span><b>{this.props.product.price + ' '}</b></span>
-      <span onClick={this.onStatusClick}>{this.props.product.available ? 'Available':'Not available'}</span>
-      <button onClick={this.onDeleteClick}>Delete</button>
-      </li>
+      <div class="product">
+                <label for={this.props.product._id}></label>
+                <input type="checkbox" id={this.props.product._id} checked/>
+                <div class="product-content">
+                    <div class="product-title">
+                        <span>{this.props.product.title}</span>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="desc">
+                            <span class="desc-title">Описание</span>
+                            <span class="desc-text">{this.props.product.description}</span>
+                        </div>
+                        <div class="price">
+                            <span class="price-title">Цена</span>
+                            <span class="price-text">{this.props.product.price}</span>
+                        </div>
+                    </div>
+
+                    <div class="product-del">
+                        <hr/>
+                        <button class="btn-del" onClick>Удалить</button>
+                    </div>
+                </div>
+            </div>
     )
   }
 }
