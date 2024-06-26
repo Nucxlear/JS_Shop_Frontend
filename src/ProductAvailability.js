@@ -56,10 +56,10 @@ class ProductAvailability extends React.Component {
   render() {
     return (
       <div className="product">
-        <label htmlFor={this.props.product._id}></label>
+        <label htmlFor={this.props.product._id} onClick={this.onStatusClick} ></label>
         <input
           type="checkbox"
-          defaultChecked={this.props.product.available}
+          readOnly checked={this.props.product.available}
           onClick={this.onStatusClick} 
           id={this.props.product._id}
         />
