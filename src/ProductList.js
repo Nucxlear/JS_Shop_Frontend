@@ -15,7 +15,7 @@ class ProductList extends React.Component{
         
         <hr/>
 
-        <div class="list-products">
+        <div className="list-products">
             {
               this.props.products.map((product)=>{
                 return(

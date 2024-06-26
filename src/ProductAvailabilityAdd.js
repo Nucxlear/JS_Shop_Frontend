@@ -74,11 +74,11 @@ class ProductAvailabilityAddInner extends React.Component{
         
         <hr/>
 
-        <form class="form-add-product" onSubmit={this.onAddFormSubmit}>
-            <input class="input-title" value={this.state.title} onChange={this.onTitleChange} type="text" placeholder="Название" />
-            <input class="input-desc"  value={this.state.description} onChange={this.onDescriptionChange} type="text" placeholder="Описание"/>
-            <input class="input-price" value={this.state.price} onChange={this.onPriceChange}type="text" placeholder="Цена" />
-            <button class="btn-add">Добавить</button>
+        <form className="form-add-product" onSubmit={this.onAddFormSubmit}>
+            <input className="input-title" value={this.state.title} onChange={this.onTitleChange} type="text" placeholder="Название" />
+            <input className="input-desc"  value={this.state.description} onChange={this.onDescriptionChange} type="text" placeholder="Описание"/>
+            <input className="input-price" value={this.state.price} onChange={this.onPriceChange}type="text" placeholder="Цена" />
+            <button className="btn-add">Добавить</button>
         </form>
       </section>
     )
