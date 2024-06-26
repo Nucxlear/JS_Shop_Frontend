@@ -6,9 +6,7 @@ import { productDelete, productUpateState } from './actions';
 class ProductAvailability extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isChecked: this.props.product.available,
-    };
+    
 
     this.onStatusClick = this.onStatusClick.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
@@ -16,12 +14,11 @@ class ProductAvailability extends React.Component {
 
   onStatusClick(e) {
     e.preventDefault();
-
-    this.setState({ isChecked: !this.state.isChecked }); 
+    
     fetch(`/products/${this.props.product._id}`, {
       method: 'PATCH',
       body: JSON.stringify({
-        available: !this.state.isChecked,
+        available: !this.props.product.available,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +29,7 @@ class ProductAvailability extends React.Component {
           console.log('updated');
           
           this.props.dispatch(
-            productUpateState(this.props.product._id, !this.state.isChecked)
+            productUpateState(this.props.product._id, !this.props.product.available)
           );
         } else {
           console.log('not updated');
@@ -62,7 +59,7 @@ class ProductAvailability extends React.Component {
         <label htmlFor={this.props.product._id}></label>
         <input
           type="checkbox"
-          checked={this.state.isChecked}
+          defaultChecked={this.props.product.available}
           onClick={this.onStatusClick} 
           id={this.props.product._id}
         />
