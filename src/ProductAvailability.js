@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { productDelete, productUpateState } from './actions';
-class ProductAvailability extends React.Component{
 
-  constructor(props){
+class ProductAvailability extends React.Component {
+  constructor(props) {
     super(props);
+    this.state = {
+      isChecked: this.props.product.available,
+    };
 
     this.onStatusClick = this.onStatusClick.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
@@ -14,49 +17,57 @@ class ProductAvailability extends React.Component{
   onStatusClick(e) {
     e.preventDefault();
 
-    fetch(`products/${this.props.product._id}`, {
+    this.setState({ isChecked: !this.state.isChecked }); 
+    fetch(`/products/${this.props.product._id}`, {
       method: 'PATCH',
-      body: JSON.stringify({ 
-        available: !this.props.product.available
+      body: JSON.stringify({
+        available: !this.state.isChecked,
       }),
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    }).then((res) => {
-      if(res.status === 200){
-        console.log('updated');
-        this.props.dispatch(productUpateState(this.props.product._id));
-      }
-      else{
-        console.log('not updated');
-      }
-    });
-
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log('updated');
+          
+          this.props.dispatch(
+            productUpateState(this.props.product._id, !this.state.isChecked)
+          );
+        } else {
+          console.log('not updated');
+        }
+      });
   }
 
-  onDeleteClick(e){
+  onDeleteClick(e) {
     e.preventDefault();
 
-    fetch(`products/${this.props.product._id}`, {
-      method: 'DELETE'
-    }).then((res) => {
-      if(res.status === 200){
-        console.log('deleted');
-        this.props.dispatch(productDelete(this.props.product._id));
-      }
-      else{
-        console.log('not deleted');
-      }
-    });
+    fetch(`/products/${this.props.product._id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log('deleted');
+          this.props.dispatch(productDelete(this.props.product._id));
+        } else {
+          console.log('not deleted');
+        }
+      });
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="product">
         <label htmlFor={this.props.product._id}></label>
-        <input type="checkbox" onChange={this.onStatusClick} id={this.props.product._id} defaultChecked={this.props.product.available}/>
+        <input
+          type="checkbox"
+          checked={this.state.isChecked}
+          onClick={this.onStatusClick} 
+          id={this.props.product._id}
+        />
         <div className="product-content">
-            <div className="product-title">
+        <div className="product-title">
                 <span>{this.props.product.title}</span>
             </div>
 
@@ -77,8 +88,8 @@ class ProductAvailability extends React.Component{
             </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect() (ProductAvailability);
+export default connect()(ProductAvailability);
